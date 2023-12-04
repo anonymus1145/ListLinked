@@ -88,7 +88,7 @@ function LinkList(this: LinkedList) {
   };
 
   this.contains = function (value: any) {
-    let currentNode = this.head();
+    let currentNode = head;
 
     while (currentNode.next) {
       if (currentNode.value === value) {
@@ -96,11 +96,15 @@ function LinkList(this: LinkedList) {
       }
       currentNode = currentNode.next;
     }
+
+    if (currentNode.value === value) {
+      return true;
+    }
     return false;
   };
 
   this.find = function (value: any) {
-    let currentNode = this.head();
+    let currentNode = head;
     let index = 0;
 
     while (currentNode.next) {
@@ -109,6 +113,10 @@ function LinkList(this: LinkedList) {
       }
       currentNode = currentNode.next;
       index++;
+    }
+
+    if (currentNode.value === value) {
+      return index;
     }
 
     return -1;
@@ -123,7 +131,7 @@ function LinkList(this: LinkedList) {
       currentNode = currentNode.next;
     }
 
-    return string += currentNode.value;
+    return (string += currentNode.value);
   };
 }
 
@@ -133,12 +141,14 @@ myList.append(5);
 myList.append(10);
 myList.prepend(15);
 
-
 console.log(myList.toString()); // 15 -> 5 -> 10
 console.log(myList.size()); // 3
-console.log(myList.at(2).value);  // 10
+console.log(myList.at(2).value); // 10
 
 myList.pop();
 console.log(myList.toString()); // 15 -> 5
+
 console.log(myList.contains(5)); // true
+
+console.log(myList.find(10)); // -1
 

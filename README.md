@@ -29,6 +29,7 @@ myList.append(5);
 myList.prepend(2);
 console.log(myList.toString()); // Output: 2 -> 5
 console.log(myList.size()); // Output: 2
+```
 
 ## Contributions
 
